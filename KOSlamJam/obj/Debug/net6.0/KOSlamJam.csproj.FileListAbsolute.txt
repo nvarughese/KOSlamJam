@@ -27,3 +27,5 @@ C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\obj\Debug\net6.0\KOSlamJam.pdb
 C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\obj\Debug\net6.0\KOSlamJam.genruntimeconfig.cache
 C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\obj\Debug\net6.0\ref\KOSlamJam.dll
 C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_v1.xnb
+C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\File.xnb
+C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\health font.xnb

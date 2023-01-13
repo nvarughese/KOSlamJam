@@ -20,11 +20,13 @@ namespace KOSlamJam
         private Texture2D _thorTexture;
         private Texture2D _baddyTexture;
 
+        private SpriteFont _font;
+
         // why does the active character start off as dark, weird as you can still move
         public static string _activeCharacter = "wrestler";
 
-        public static int ScreenWidth = 1280;
-        public static int ScreenHeight = 720;
+        public static int ScreenWidth = 1350;
+        public static int ScreenHeight = 900;
 
         public Game1()
         {
@@ -53,12 +55,13 @@ namespace KOSlamJam
             _graffitiTexture = Content.Load<Texture2D>("Graffiti_v1");
             _thorTexture = Content.Load<Texture2D>("Thor_v1");
             _baddyTexture = Content.Load<Texture2D>("Baddy_v1");
+            _font = Content.Load<SpriteFont>("health font");
 
             _sprites = new List<Sprite>();
 
-            Wrestler wrestler   = new Wrestler(_wrestlerTexture, ScreenWidth, ScreenHeight);
-            Graffiti graffiti   = new Graffiti(_graffitiTexture, ScreenWidth, ScreenHeight);
-            Thor thor           = new Thor(_thorTexture, ScreenWidth, ScreenHeight);
+            Wrestler wrestler   = new Wrestler(_wrestlerTexture, ScreenWidth, ScreenHeight, _font);
+            Graffiti graffiti   = new Graffiti(_graffitiTexture, ScreenWidth, ScreenHeight, _font);
+            Thor thor           = new Thor(_thorTexture, ScreenWidth, ScreenHeight, _font);
             Baddy baddy1        = new Baddy(_baddyTexture, ScreenWidth, ScreenHeight);
             Baddy baddy2        = new Baddy(_baddyTexture, ScreenWidth, ScreenHeight);
             Baddy baddy3        = new Baddy(_baddyTexture, ScreenWidth, ScreenHeight);
@@ -82,7 +85,6 @@ namespace KOSlamJam
 
             // TODO: Add your update logic here
             _currentKey = Keyboard.GetState();
-            // move the farmer using the arrow keys
             if (_currentKey.IsKeyDown(Keys.Space) && !_previousKey.IsKeyDown(Keys.Space))
             {
                 if (_activeCharacter == "wrestler"){ _activeCharacter = "graffiti"; }
@@ -92,7 +94,7 @@ namespace KOSlamJam
             _previousKey = _currentKey;
             foreach (Sprite sprite in _sprites)
             {
-                sprite.Update(gameTime, _activeCharacter);
+                sprite.Update(gameTime, _activeCharacter, _sprites);
             }
 
             base.Update(gameTime);
@@ -120,18 +122,27 @@ namespace KOSlamJam
 /*
  * todo
  * 
- * add in some baddies
- * make the baddies go gradually to the active characters
- * on connection reduce character health and make the character red colour
+ * baddies
+ *      - make the baddies go gradually to the active characters
+ *      
+ * collisions     
+ *      - fix up dead characters so you rotate over non dead ones
+ *      - make the character red when there is a collision
+ *      - make character dark red when dead and not moving
+ *      - make health into a bar
  * 
  * think about solidness, make character bounce off each other
  * also think about layering, show characters lower in the screen above higher characters
  * 
- * add in music
+ * music
  * 
- * add in animation
+ * animation
  * 
- * do a display for health and time
- * make the display look nice, do bars for health and nicer timer in the box
+ * screens and menus
+ *      - make intro screen
+ *      - make death screen
+ *      
+ * 
+ * 
  * 
  */

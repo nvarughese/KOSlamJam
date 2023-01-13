@@ -23,7 +23,8 @@ namespace KOSlamJam.Sprites
         public Vector2 _direction;
         public float _speed = 0f;
         public float _collisionDamage = 0;
-        public float _speedMultiplier = 0;
+        public float _resilienceMultiplier = 1;
+        public float _health = 100;
         // redo this using enums
         public string _type = "wrestler";
 
@@ -47,7 +48,7 @@ namespace KOSlamJam.Sprites
                 throw new Exception("Unknown sprite");
             }
         }
-        public virtual void Update(GameTime gameTime, string activeCharacter)
+        public virtual void Update(GameTime gameTime, string activeCharacter, List<Sprite> sprites)
         {
 
         }

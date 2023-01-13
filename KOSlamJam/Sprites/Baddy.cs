@@ -14,13 +14,14 @@ namespace KOSlamJam.Sprites
     {
         public Baddy(Texture2D texture, int screenWidth, int screenHeight) : base(texture, screenWidth, screenHeight)
         {
-            _speed = 400;
+            
             _type = "baddy";
+            _collisionDamage = 100;
             Reset();
         }
 
 
-        public override void Update(GameTime gameTime, string sprite_type)
+        public override void Update(GameTime gameTime, string sprite_type, List<Sprite> sprites)
         {
            
             Move(gameTime.ElapsedGameTime.TotalSeconds);
@@ -32,8 +33,8 @@ namespace KOSlamJam.Sprites
             Random rand = new Random();
             _direction.X += (float)rand.Next(-1, 2) * (float)elapsedTime;
             _direction.Y += (float)rand.Next(-1, 2) * (float)elapsedTime;
-            _position.X += _direction.X;
-            _position.Y += _direction.Y;
+            _position.X += _direction.X * _speed * (float)elapsedTime;
+            _position.Y += _direction.Y * _speed * (float)elapsedTime;
         }
 
         public void KeepWithinBounds()
@@ -68,6 +69,7 @@ namespace KOSlamJam.Sprites
             _position.Y = rand.Next(_texture.Height / 2, (_screenHeight - _texture.Height / 2) + 1);
             _direction.X = rand.Next(-5, 6);
             _direction.Y = rand.Next(-5, 6);
+            _speed = rand.Next(50, 501);
         }
 
 
