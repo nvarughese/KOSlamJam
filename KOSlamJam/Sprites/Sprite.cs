@@ -29,9 +29,11 @@ namespace KOSlamJam.Sprites
         public string _type = "wrestler";
 
         public Texture2D _texture;
+        public SpriteFont _font;
 
-        public Sprite(Texture2D texture, int screenWidth, int screenHeight)
+        public Sprite(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font)
         {
+            _font = font;
             _texture = texture;
             _screenWidth = screenWidth;
             _screenHeight = screenHeight;

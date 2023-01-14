@@ -12,9 +12,8 @@ namespace KOSlamJam.Sprites
 {
     internal class Baddy : Sprite
     {
-        public Baddy(Texture2D texture, int screenWidth, int screenHeight) : base(texture, screenWidth, screenHeight)
+        public Baddy(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
         {
-            
             _type = "baddy";
             _collisionDamage = 100;
             Reset();
@@ -70,6 +69,12 @@ namespace KOSlamJam.Sprites
             _direction.X = rand.Next(-5, 6);
             _direction.Y = rand.Next(-5, 6);
             _speed = rand.Next(50, 501);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch, string activeCharacter)
+        {
+            base.Draw(spriteBatch, activeCharacter);
+            spriteBatch.DrawString(_font, ((int)_health).ToString(), new Vector2(_position.X - _texture.Width / 5, _position.Y - _texture.Height / 2 - 20), Color.Blue);
         }
 
 

@@ -23,6 +23,7 @@ namespace KOSlamJam.Sprites
         public override void Reset()
         {
             _position = new Vector2(_screenWidth * 1 / 2, _screenHeight * 2 / 3);
+            _health = 200;
         }
     }
 }

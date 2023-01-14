@@ -14,10 +14,9 @@ namespace KOSlamJam.Sprites
     internal class Character : Sprite
     {
 
-        private SpriteFont _font;
-        public Character(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight)
+        
+        public Character(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
         {
-            _font = font;
         }
 
 
@@ -40,7 +39,7 @@ namespace KOSlamJam.Sprites
                     if (sprite.Rectangle.Intersects(this.Rectangle))
                     {
                         _health -= (float)elapsedTime * sprite._collisionDamage * this._resilienceMultiplier;
-                        _health = Math.Max(0, _health);
+                        _health = Math.Max(0f, _health);
                     }
                 }
             }
@@ -104,7 +103,7 @@ namespace KOSlamJam.Sprites
             {
                 spriteBatch.Draw(_texture, _position, null, Color.DarkRed, 0f, new Vector2(_texture.Width / 2, _texture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
             }
-            spriteBatch.DrawString(_font, ((int)_health).ToString(), new Vector2(_position.X - _texture.Width / 2, _position.Y - _texture.Height / 2 - 50), Color.Blue);
+            spriteBatch.DrawString(_font, ((int)_health).ToString(), new Vector2(_position.X - _texture.Width / 5, _position.Y - _texture.Height / 2 - 20), Color.Blue);
         }
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/mahan/source/repos/KOSlamJam/KOSlamJam/Content/baddy_v1.png</SourceFile>
-  <SourceTime>2023-01-13T17:42:14.4332455+00:00</SourceTime>
-  <DestFile>C:/Users/mahan/source/repos/KOSlamJam/KOSlamJam/Content/bin/DesktopGL/Content/baddy_v1.xnb</DestFile>
-  <DestTime>2023-01-13T18:05:19.1324191+00:00</DestTime>
+  <SourceFile>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_v1.png</SourceFile>
+  <SourceTime>2023-01-14T09:41:09.6534552+00:00</SourceTime>
+  <DestFile>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/bin/DesktopGL/Content/baddy_v1.xnb</DestFile>
+  <DestTime>2023-01-14T09:47:17.8720406+00:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T12:44:56+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
