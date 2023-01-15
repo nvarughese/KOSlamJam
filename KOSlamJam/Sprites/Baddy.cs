@@ -35,6 +35,7 @@ namespace KOSlamJam.Sprites
             _textureL2 = textureL2;
             _textureLA = textureLA;
             _textureLF = textureLF;
+            _animationCycleTime = 500f;
             Reset();
         }
 
@@ -48,12 +49,14 @@ namespace KOSlamJam.Sprites
 
         public void Move(double elapsedTime)
         {
+            _totalTime += (float)elapsedTime;
+            bool isAnimationOne = (_totalTime * 1000) % _animationCycleTime < (_animationCycleTime / 2); 
             Random rand = new Random();
             _direction.X += (float)rand.Next(-1, 2) * (float)elapsedTime;
             _direction.Y += (float)rand.Next(-1, 2) * (float)elapsedTime;
             _position.X += _direction.X * _speed * (float)elapsedTime;
             _position.Y += _direction.Y * _speed * (float)elapsedTime;
-            _texture = _direction.X >= 0 ? _textureR1 : _textureL1;
+            _texture = _direction.X >= 0 ? (isAnimationOne ? _textureR1: _textureR2): (isAnimationOne ? _textureL1 : _textureL2);
         }
 
         public void KeepWithinBounds()
@@ -88,7 +91,7 @@ namespace KOSlamJam.Sprites
             _position.Y = rand.Next(_texture.Height / 2, (_screenHeight - _texture.Height / 2) + 1);
             _direction.X = rand.Next(-5, 6);
             _direction.Y = rand.Next(-5, 6);
-            _speed = rand.Next(50, 501);
+            _speed = rand.Next(50, 300);
         }
 
         public override void Draw(SpriteBatch spriteBatch, string activeCharacter)

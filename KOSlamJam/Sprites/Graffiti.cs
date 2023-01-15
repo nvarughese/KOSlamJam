@@ -35,7 +35,33 @@ namespace KOSlamJam.Sprites
             _textureL2 = textureL2;
             _textureL3 = textureL3;
             _textureLA = textureLA;
+            _animationCycleTime = 250;
             Reset();
+        }
+
+        public override void Update(GameTime gameTime, string spriteType, List<Sprite> sprites)
+        {
+            base.Update(gameTime, spriteType, sprites);
+            if (spriteType == _type)
+            {
+                _totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (_movingDirection == MovingDirection.Right)
+                {
+                    float msThroughAnimationCycle = (_totalTime * 1000) % _animationCycleTime;
+                    if (msThroughAnimationCycle < (_animationCycleTime * 1 / 4)) { _texture = _textureR1; }
+                    else if (msThroughAnimationCycle < (_animationCycleTime * 2 / 4)) { _texture = _textureR2; }
+                    else if (msThroughAnimationCycle < (_animationCycleTime * 3 / 4)) { _texture = _textureR1; }
+                    else { _texture = _textureR3; }
+                }
+                else if (_movingDirection == MovingDirection.Left)
+                {
+                    float msThroughAnimationCycle = (_totalTime * 1000) % _animationCycleTime;
+                    if (msThroughAnimationCycle < (_animationCycleTime * 1 / 4)) { _texture = _textureL1; }
+                    else if (msThroughAnimationCycle < (_animationCycleTime * 2 / 4)) { _texture = _textureL2; }
+                    else if (msThroughAnimationCycle < (_animationCycleTime * 3 / 4)) { _texture = _textureL1; }
+                    else { _texture = _textureL3; }
+                }
+            }
         }
 
         public override void Reset()

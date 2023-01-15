@@ -47,7 +47,8 @@ namespace KOSlamJam.Sprites
         public void Move(double elapsedTime)
         {
             _currentKey = Keyboard.GetState();
-            // move the farmer using the arrow keys
+            _movingDirection = MovingDirection.Still;
+            // move the character using the arrow keys
             if (_currentKey.IsKeyDown(Keys.Up))
             {
                 _position.Y -= (float)elapsedTime * _speed;
@@ -59,10 +60,12 @@ namespace KOSlamJam.Sprites
             if (_currentKey.IsKeyDown(Keys.Left))
             {
                 _position.X -= (float)elapsedTime * _speed;
+                _movingDirection = MovingDirection.Left;
             }
             if (_currentKey.IsKeyDown(Keys.Right))
             {
                 _position.X += (float)elapsedTime * _speed;
+                _movingDirection = (_movingDirection == MovingDirection.Left) ? MovingDirection.Still :MovingDirection.Right;
             }
         }
 

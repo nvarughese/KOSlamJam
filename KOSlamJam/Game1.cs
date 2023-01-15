@@ -6,6 +6,12 @@ using System.Collections.Generic;
 
 namespace KOSlamJam
 {
+    enum MovingDirection
+    {
+        Left,
+        Still,
+        Right
+    }
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
@@ -19,10 +25,10 @@ namespace KOSlamJam
         private Texture2D _wrestlerRight2Texture;
         private Texture2D _wrestlerRight3Texture;
         private Texture2D _wrestlerRightAttackTexture;
-        private Texture2D _wrestlerleft1Texture;
-        private Texture2D _wrestlerleft2Texture;
-        private Texture2D _wrestlerleft3Texture;
-        private Texture2D _wrestlerleftAttackTexture;
+        private Texture2D _wrestlerLeft1Texture;
+        private Texture2D _wrestlerLeft2Texture;
+        private Texture2D _wrestlerLeft3Texture;
+        private Texture2D _wrestlerLeftAttackTexture;
         private Texture2D _graffitiRight1Texture;
         private Texture2D _graffitiRight2Texture;
         private Texture2D _graffitiRight3Texture;
@@ -81,10 +87,10 @@ namespace KOSlamJam
             _wrestlerRight2Texture = Content.Load<Texture2D>("wrestler_right2");
             _wrestlerRight3Texture = Content.Load<Texture2D>("wrestler_right3");
             _wrestlerRightAttackTexture = Content.Load<Texture2D>("wrestler_right_attack");
-            _wrestlerleft1Texture = Content.Load<Texture2D>("wrestler_left");
-            _wrestlerleft2Texture = Content.Load<Texture2D>("wrestler_left2");
-            _wrestlerleft3Texture = Content.Load<Texture2D>("wrestler_left3");
-            _wrestlerleftAttackTexture = Content.Load<Texture2D>("wrestler_left_attack");
+            _wrestlerLeft1Texture = Content.Load<Texture2D>("wrestler_left");
+            _wrestlerLeft2Texture = Content.Load<Texture2D>("wrestler_left2");
+            _wrestlerLeft3Texture = Content.Load<Texture2D>("wrestler_left3");
+            _wrestlerLeftAttackTexture = Content.Load<Texture2D>("wrestler_left_attack");
             _graffitiRight1Texture = Content.Load<Texture2D>("graffiti_right");
             _graffitiRight2Texture = Content.Load<Texture2D>("graffiti_right2");
             _graffitiRight3Texture = Content.Load<Texture2D>("graffiti_right3");
@@ -116,8 +122,8 @@ namespace KOSlamJam
             _sprites = new List<Sprite>();
 
             Wrestler wrestler   = new Wrestler(ScreenWidth, ScreenHeight, _healthFont,
-                _wrestlerRight1Texture, _wrestlerRight1Texture, _wrestlerRight1Texture, _wrestlerRight1Texture,
-                _wrestlerRight1Texture, _wrestlerRight1Texture, _wrestlerRight1Texture, _wrestlerRight1Texture);
+                _wrestlerRight1Texture, _wrestlerRight2Texture, _wrestlerRight3Texture, _wrestlerRightAttackTexture,
+                _wrestlerLeft1Texture, _wrestlerLeft2Texture, _wrestlerLeft3Texture, _wrestlerLeftAttackTexture);
             Graffiti graffiti   = new Graffiti(ScreenWidth, ScreenHeight, _healthFont,
                 _graffitiRight1Texture, _graffitiRight2Texture, _graffitiRight3Texture, _graffitiRightAttackTexture,
                 _graffitiLeft1Texture, _graffitiLeft2Texture, _graffitiLeft3Texture, _graffitiLeftAttackTexture);

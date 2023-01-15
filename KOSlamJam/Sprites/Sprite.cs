@@ -27,7 +27,9 @@ namespace KOSlamJam.Sprites
         public float _health = 100;
         // redo this using enums
         public string _type = "wrestler";
-        public bool _faceRight;
+        public MovingDirection _movingDirection;
+        public float _totalTime;
+        public float _animationCycleTime = 500;  // in ms to complete animation cycle, lower is faster
 
         public Texture2D _texture;
         public SpriteFont _font;
