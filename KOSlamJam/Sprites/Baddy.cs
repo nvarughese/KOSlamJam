@@ -12,10 +12,29 @@ namespace KOSlamJam.Sprites
 {
     internal class Baddy : Sprite
     {
-        public Baddy(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
+        private Texture2D _textureR1;
+        private Texture2D _textureR2;
+        private Texture2D _textureRA;
+        private Texture2D _textureRF;
+        private Texture2D _textureL1;
+        private Texture2D _textureL2;
+        private Texture2D _textureLA;
+        private Texture2D _textureLF;
+
+        public Baddy(int screenWidth, int screenHeight, SpriteFont font,
+            Texture2D textureR1, Texture2D textureR2, Texture2D textureRA, Texture2D textureRF,
+            Texture2D textureL1, Texture2D textureL2, Texture2D textureLA, Texture2D textureLF) : base(screenWidth, screenHeight, font, textureR1)
         {
             _type = "baddy";
             _collisionDamage = 100;
+            _textureR1 = textureR1;
+            _textureR2 = textureR2;
+            _textureRA = textureRA;
+            _textureRF = textureRF;
+            _textureL1 = textureL1;
+            _textureL2 = textureL2;
+            _textureLA = textureLA;
+            _textureLF = textureLF;
             Reset();
         }
 
@@ -34,6 +53,7 @@ namespace KOSlamJam.Sprites
             _direction.Y += (float)rand.Next(-1, 2) * (float)elapsedTime;
             _position.X += _direction.X * _speed * (float)elapsedTime;
             _position.Y += _direction.Y * _speed * (float)elapsedTime;
+            _texture = _direction.X >= 0 ? _textureR1 : _textureL1;
         }
 
         public void KeepWithinBounds()

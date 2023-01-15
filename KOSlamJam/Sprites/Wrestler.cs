@@ -13,13 +13,29 @@ namespace KOSlamJam.Sprites
 {
     internal class Wrestler : Character
     {
-
-        private SpriteFont _font;
-        public Wrestler(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
+        private Texture2D _textureR1;
+        private Texture2D _textureR2;
+        private Texture2D _textureR3;
+        private Texture2D _textureRA;
+        private Texture2D _textureL1;
+        private Texture2D _textureL2;
+        private Texture2D _textureL3;
+        private Texture2D _textureLA;
+        public Wrestler(int screenWidth, int screenHeight, SpriteFont font, 
+            Texture2D textureR1, Texture2D textureR2, Texture2D textureR3, Texture2D textureRA,
+            Texture2D textureL1, Texture2D textureL2, Texture2D textureL3, Texture2D textureLA) : base(screenWidth, screenHeight, font, textureR1)
         {
             _type = "wrestler";
             _speed = 300;
             _resilienceMultiplier = 0.7f;
+            _textureR1 = textureR1;
+            _textureR2 = textureR2;
+            _textureR3 = textureR3;
+            _textureRA = textureRA;
+            _textureL1 = textureL1;
+            _textureL2 = textureL2;
+            _textureL3 = textureL3;
+            _textureLA = textureLA;
             Reset();
         }
 
@@ -27,6 +43,7 @@ namespace KOSlamJam.Sprites
         {
             _position = new Vector2(_screenWidth * 1 / 3, _screenHeight * 1 / 3);
             _health = 200;
+            _faceRight = true;
         }
 
 

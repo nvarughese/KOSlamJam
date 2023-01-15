@@ -4,17 +4,65 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_v1.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_left_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_left_floor.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_left.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_left2.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_right_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_right_floor.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_right.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/baddy_right2.png</File>
     <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/big font.spritefont</File>
     <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/File.spritefont</File>
-    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/Graffiti_v1.png</File>
-    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/Thor_v1.png</File>
-    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/Wrestler_v1.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_left_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_left.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_left2.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_left3.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_right_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_right.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_right2.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/graffiti_right3.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/thor_left_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/thor_left.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/thor_right_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/thor_right.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_left_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_left.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_left2.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_left3.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_right_attack.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_right.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_right2.png</File>
+    <File>C:/Users/nathan/Documents/KO Slam Jam/KOSlamJam/KOSlamJam/Content/wrestler_right3.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File>health font.spritefont</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

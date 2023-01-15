@@ -30,11 +30,7 @@ C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_v
 C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\File.xnb
 C:\Users\mahan\source\repos\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\health font.xnb
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\File.xnb
-C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_v1.xnb
-C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\Graffiti_v1.xnb
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\health font.xnb
-C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\Thor_v1.xnb
-C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\Wrestler_v1.xnb
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\KOSlamJam.exe
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\KOSlamJam.deps.json
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\KOSlamJam.runtimeconfig.json
@@ -61,3 +57,31 @@ C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\obj\Debug\net6.0\KOSla
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\obj\Debug\net6.0\KOSlamJam.genruntimeconfig.cache
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\obj\Debug\net6.0\ref\KOSlamJam.dll
 C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\big font.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_left.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_left2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_left_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_left_floor.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_right.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_right2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_right_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\baddy_right_floor.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_left.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_left2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_left3.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_left_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_right.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_right2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_right3.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\graffiti_right_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\thor_left.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\thor_left_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\thor_right.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\thor_right_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_left.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_left2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_left3.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_left_attack.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_right.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_right2.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_right3.xnb
+C:\Users\nathan\Documents\KO Slam Jam\KOSlamJam\KOSlamJam\bin\Debug\net6.0\Content\wrestler_right_attack.xnb

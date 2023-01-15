@@ -12,11 +12,21 @@ namespace KOSlamJam.Sprites
 {
     internal class Thor : Character
     {
-        public Thor(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
+        private Texture2D _textureR;
+        private Texture2D _textureRA;
+        private Texture2D _textureL;
+        private Texture2D _textureLA;
+
+        public Thor(int screenWidth, int screenHeight, SpriteFont font,
+            Texture2D textureR, Texture2D textureRA, Texture2D textureL, Texture2D textureLA) : base(screenWidth, screenHeight, font, textureR)
         {
             _type = "thor";
             _speed = 500;
             _resilienceMultiplier = 0.9f;
+            _textureR = textureR;
+            _textureRA = textureRA;
+            _textureL = textureL;
+            _textureLA = textureLA;
             Reset();
         }
 

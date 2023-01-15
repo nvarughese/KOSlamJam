@@ -13,9 +13,7 @@ namespace KOSlamJam.Sprites
 {
     internal class Character : Sprite
     {
-
-        
-        public Character(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font) : base(texture, screenWidth, screenHeight, font)
+        public Character(int screenWidth, int screenHeight, SpriteFont font, Texture2D texture) : base(screenWidth, screenHeight, font, texture)
         {
         }
 

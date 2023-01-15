@@ -27,11 +27,12 @@ namespace KOSlamJam.Sprites
         public float _health = 100;
         // redo this using enums
         public string _type = "wrestler";
+        public bool _faceRight;
 
         public Texture2D _texture;
         public SpriteFont _font;
 
-        public Sprite(Texture2D texture, int screenWidth, int screenHeight, SpriteFont font)
+        public Sprite(int screenWidth, int screenHeight, SpriteFont font, Texture2D texture)
         {
             _font = font;
             _texture = texture;
