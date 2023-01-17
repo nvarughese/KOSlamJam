@@ -3,14 +3,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Xml.Linq;
 
 namespace KOSlamJam
 {
-    enum MovingDirection
+    public enum MovingDirection
     {
         Left,
         Still,
         Right
+    }
+
+    public enum CharacterType
+    {
+        Wrestler,
+        Graffiti,
+        Thor,
+        Baddy
     }
     public class Game1 : Game
     {
@@ -53,9 +63,17 @@ namespace KOSlamJam
         private SpriteFont _healthFont;
         private SpriteFont _bigFont;
 
+        private float _gameTimer;
         private bool _gameOver;
+        private float _gameWonTime;
+        private bool _gameWon;
 
-        public static string _activeCharacter = "wrestler";
+        private float _baddyTimer;
+        private int _numberNewBaddys;
+
+        private Color _backgroundColour;
+
+        public static CharacterType _activeCharacter = CharacterType.Wrestler;
 
         public static int ScreenWidth = 1350;
         public static int ScreenHeight = 900;
@@ -70,6 +88,9 @@ namespace KOSlamJam
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            _gameTimer = 0f;
+            _gameWonTime = 120f;
+            _backgroundColour = new Color(50, 50, 50);
             _graphics.PreferredBackBufferWidth = ScreenWidth;
             _graphics.PreferredBackBufferHeight = ScreenHeight;
             this.Window.AllowUserResizing = false;
@@ -111,13 +132,13 @@ namespace KOSlamJam
             _baddyleft2Texture = Content.Load<Texture2D>("baddy_left2");
             _baddyleftAttackTexture = Content.Load<Texture2D>("baddy_left_attack");
             _baddyleftFloorTexture = Content.Load<Texture2D>("baddy_left_floor");
-            
 
-
-
-
-        _healthFont = Content.Load<SpriteFont>("health font");
+            _healthFont = Content.Load<SpriteFont>("health font");
             _bigFont = Content.Load<SpriteFont>("big font");
+
+            ResetGame();
+        }
+        private void ResetGame() { 
 
             _sprites = new List<Sprite>();
 
@@ -140,8 +161,14 @@ namespace KOSlamJam
                     _baddyleft1Texture, _baddyleft2Texture, _baddyleftAttackTexture, _baddyleftFloorTexture)
                     );
             }
-            
+
+            _activeCharacter = CharacterType.Wrestler;
             _gameOver = false;
+            _gameWon = false;
+            _gameTimer = 0f;
+            _baddyTimer = 0f;
+            _numberNewBaddys = 0;
+
 
         }
 
@@ -152,17 +179,12 @@ namespace KOSlamJam
 
             // TODO: Add your update logic here
             // if game over then check for an enter press and reset
-            if (_gameOver)
+            if (_gameOver || _gameWon)
             {
                 _currentKey = Keyboard.GetState();
                 if (_currentKey.IsKeyDown(Keys.Enter))
                 {
-                    foreach (Sprite sprite in _sprites)
-                    {
-                        sprite.Reset();
-                    }
-                    _activeCharacter = "wrestler";
-                    _gameOver = false;
+                    ResetGame();
                 }
                 else
                 {
@@ -170,14 +192,15 @@ namespace KOSlamJam
                     return;
                 }
             }
+            
             float wrestlerHealth = 0;
             float graffitiHealth = 0;
             float thorHealth = 0;
             foreach (Sprite sprite in _sprites)
             {
-                if (sprite._type == "wrestler") { wrestlerHealth = sprite._health; }
-                else if (sprite._type == "graffiti") { graffitiHealth = sprite._health; }
-                else if (sprite._type == "thor") { thorHealth = sprite._health; }
+                if (sprite._type == CharacterType.Wrestler) { wrestlerHealth = sprite._health; }
+                else if (sprite._type == CharacterType.Graffiti) { graffitiHealth = sprite._health; }
+                else if (sprite._type == CharacterType.Thor) { thorHealth = sprite._health; }
             }
             if (wrestlerHealth + graffitiHealth + thorHealth <= 0) 
             {
@@ -185,42 +208,75 @@ namespace KOSlamJam
                 base.Update(gameTime);
                 return;
             }
+            if (_gameTimer > _gameWonTime)
+            {
+                _gameWon = true;
+                base.Update(gameTime);
+                return;
+            }
+
+            _baddyTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (_baddyTimer > 5)
+            {
+                _numberNewBaddys++;
+                for (int i = 1; i <= _numberNewBaddys; i++)
+                {
+                    _sprites.Add(new Baddy(ScreenWidth, ScreenHeight, _healthFont,
+                        _baddyRight1Texture, _baddyRight2Texture, _baddyRightAttackTexture, _baddyRightFloorTexture,
+                        _baddyleft1Texture, _baddyleft2Texture, _baddyleftAttackTexture, _baddyleftFloorTexture)
+                        );
+                }
+                _baddyTimer = 0;
+            }
 
             _currentKey = Keyboard.GetState();
             if (_currentKey.IsKeyDown(Keys.Space) && !_previousKey.IsKeyDown(Keys.Space))
             {
-                if (_activeCharacter == "wrestler") { _activeCharacter = graffitiHealth > 0 ? "graffiti" : "thor"; }
-                else if (_activeCharacter == "graffiti") { _activeCharacter = thorHealth > 0 ? "thor" : "wrestler"; }
-                else if (_activeCharacter == "thor") { _activeCharacter = wrestlerHealth > 0 ? "wrestler" : "graffiti"; }
+                if (_activeCharacter == CharacterType.Wrestler) { _activeCharacter = graffitiHealth > 0 ? CharacterType.Graffiti : CharacterType.Thor; }
+                else if (_activeCharacter == CharacterType.Graffiti) { _activeCharacter = thorHealth > 0 ? CharacterType.Thor : CharacterType.Wrestler; }
+                else if (_activeCharacter == CharacterType.Thor) { _activeCharacter = wrestlerHealth > 0 ? CharacterType.Wrestler : CharacterType.Graffiti; }
             }
             else
             {
-                if (_activeCharacter == "wrestler") { _activeCharacter = wrestlerHealth > 0 ? "wrestler" : (graffitiHealth > 0 ? "graffiti" : "thor"); }
-                else if (_activeCharacter == "graffiti") { _activeCharacter = graffitiHealth > 0 ? "graffiti" : (thorHealth > 0 ? "thor" : "wrestler"); }
-                else if (_activeCharacter == "thor") { _activeCharacter = thorHealth > 0 ? "thor" : (wrestlerHealth > 0 ? "wrestler" : "graffiti"); }
+                if (_activeCharacter == CharacterType.Wrestler) { _activeCharacter = wrestlerHealth > 0 ? CharacterType.Wrestler : (graffitiHealth > 0 ? CharacterType.Graffiti : CharacterType.Thor); }
+                else if (_activeCharacter == CharacterType.Graffiti) { _activeCharacter = graffitiHealth > 0 ? CharacterType.Graffiti : (thorHealth > 0 ? CharacterType.Thor : CharacterType.Wrestler); }
+                else if (_activeCharacter == CharacterType.Thor) { _activeCharacter = thorHealth > 0 ? CharacterType.Thor : (wrestlerHealth > 0 ? CharacterType.Wrestler : CharacterType.Graffiti); }
             }
             _previousKey = _currentKey;
             foreach (Sprite sprite in _sprites)
             {
+                sprite._isHit = false;
+            }
+            foreach (Sprite sprite in _sprites)
+            {
                 sprite.Update(gameTime, _activeCharacter, _sprites);
             }
+            _gameTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(_backgroundColour);
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            _spriteBatch.DrawString(_healthFont, "Controls: move=arrows, attack=z, transition character=space, survive " + ((int)_gameWonTime).ToString() + " seconds to win", new Vector2(0, 0), Color.Yellow);
             foreach (Sprite sprite in _sprites)
             {
                 sprite.Draw(_spriteBatch, _activeCharacter);
             }
+            _spriteBatch.DrawString(_bigFont, ((int)_gameTimer).ToString(), new Vector2(ScreenWidth * 4 / 9, 0), Color.Yellow);
+            if (_gameWon)
+            {
+                _spriteBatch.DrawString(_bigFont, " You Win!!", new Vector2(ScreenWidth / 8, ScreenHeight / 3), Color.Yellow);
+                _spriteBatch.DrawString(_bigFont, "Press Enter", new Vector2(ScreenWidth / 8, ScreenHeight * 2 / 3), Color.Yellow);
+            }
             if (_gameOver)
             {
                 _spriteBatch.DrawString(_bigFont, "Game Over", new Vector2(ScreenWidth / 8, ScreenHeight / 3), Color.Red);
+                _spriteBatch.DrawString(_bigFont, "Press Enter", new Vector2(ScreenWidth / 8, ScreenHeight * 2 / 3), Color.Red);
             }
             _spriteBatch.End();
 
@@ -258,9 +314,10 @@ namespace KOSlamJam
  *      
  * 
  * actual todo:
- * bring in all textures needed
- * put in animation for characters
- * add in attacks
- * fix collisions for attacks
+ * end the game
+ * fix baddy movement
+ * 
+ * 
+ * 
  * 
  */

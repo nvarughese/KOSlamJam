@@ -25,8 +25,9 @@ namespace KOSlamJam.Sprites
             Texture2D textureR1, Texture2D textureR2, Texture2D textureR3, Texture2D textureRA,
             Texture2D textureL1, Texture2D textureL2, Texture2D textureL3, Texture2D textureLA) : base(screenWidth, screenHeight, font, textureR1)
         {
-            _type = "wrestler";
-            _speed = 300;
+            _type = CharacterType.Wrestler;
+            _speed = 250;
+            _collisionDamage = 250;
             _resilienceMultiplier = 0.7f;
             _textureR1 = textureR1;
             _textureR2 = textureR2;
@@ -37,15 +38,23 @@ namespace KOSlamJam.Sprites
             _textureL3 = textureL3;
             _textureLA = textureLA;
             _animationCycleTime = 500f;
+            _attackTimelimit = 0.5f;
+            _attackResetTime = 0f;
             Reset();
         }
 
-        public override void Update(GameTime gameTime, string spriteType, List<Sprite> sprites)
+        public override void Update(GameTime gameTime, CharacterType spriteType, List<Sprite> sprites)
         {
             base.Update(gameTime, spriteType, sprites);
             if (spriteType == _type)
             {
-                _totalTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (_isAttacking)
+                {
+                    _texture = _isFacingRight ? _textureRA : _textureLA;
+                    return;
+                }
+                float elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _totalTime += elapsedSeconds;
                 if (_movingDirection == MovingDirection.Right) {
                     float msThruAniCycle = (_totalTime * 1000) % _animationCycleTime;
                     if (msThruAniCycle < (_animationCycleTime * 1 / 4)) { _texture = _textureR1; }
@@ -61,13 +70,17 @@ namespace KOSlamJam.Sprites
                     else if (msThroughAnimationCycle < (_animationCycleTime * 3 / 4)) { _texture = _textureL1; }
                     else { _texture = _textureL3; }
                 }
+                else
+                {
+                    _texture = _isFacingRight ? _textureR1 : _textureL1;
+                }
             }
         }
 
         public override void Reset()
         {
             _position = new Vector2(_screenWidth * 1 / 3, _screenHeight * 1 / 3);
-            _health = 200;
+            _health = 500;
             _movingDirection = MovingDirection.Still;
         }
 

@@ -13,63 +13,109 @@ namespace KOSlamJam.Sprites
 {
     internal class Character : Sprite
     {
+        
         public Character(int screenWidth, int screenHeight, SpriteFont font, Texture2D texture) : base(screenWidth, screenHeight, font, texture)
         {
         }
 
 
-        public override void Update(GameTime gameTime, string spriteType, List<Sprite> sprites)
+        public override void Update(GameTime gameTime, CharacterType spriteType, List<Sprite> sprites)
         {
             if (spriteType == _type)
             {
-                Move(gameTime.ElapsedGameTime.TotalSeconds);
+                float elapsedSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                Move(elapsedSeconds);
+                checkIsAttacking(elapsedSeconds);
                 KeepWithinBounds();
-                HandleCollisions(gameTime.ElapsedGameTime.TotalSeconds, sprites);
+                HandleCollisions(elapsedSeconds, sprites);
             }
         }
 
-        public void HandleCollisions(double elapsedTime, List<Sprite> sprites)
+        
+
+        public void HandleCollisions(float elapsedSeconds, List<Sprite> sprites)
         {
             foreach (Sprite sprite in sprites)
             {
-                if (sprite._type == "baddy")
+                if (sprite._type == CharacterType.Baddy && sprite._health > 0)
                 {
                     if (sprite.Rectangle.Intersects(this.Rectangle))
                     {
-                        _health -= (float)elapsedTime * sprite._collisionDamage * this._resilienceMultiplier;
-                        _health = Math.Max(0f, _health);
+                        if (_isAttacking)
+                        {
+                            sprite._isHit = true;
+                            sprite._hitBy = _type;
+                            
+                            if (sprite._isAttacking)
+                            {
+                                _isHit = true;
+                                _health -= elapsedSeconds * sprite._collisionDamage * this._resilienceMultiplier * 0.2f;
+                                _health = Math.Max(0f, _health);
+                                sprite._isHit = true;
+                                sprite._health -= elapsedSeconds * _collisionDamage * sprite._resilienceMultiplier * 0.2f;
+                                sprite._health = Math.Max(0f, sprite._health);
+                                
+                            }
+                            else
+                            {
+                                sprite._isHit = true;
+                                sprite._health -= elapsedSeconds * _collisionDamage * sprite._resilienceMultiplier;
+                                sprite._health = Math.Max(0f, sprite._health);
+                                sprite._hitBy = _type;
+                            }
+                        }
+                        else
+                        {
+                            if (sprite._isAttacking)
+                            {
+                                _isHit = true;
+                                _health -= elapsedSeconds * sprite._collisionDamage * this._resilienceMultiplier;
+                                _health = Math.Max(0f, _health);
+                            }
+                            else
+                            {
+                                _isHit = true;
+                                _health -= elapsedSeconds * sprite._collisionDamage * this._resilienceMultiplier * 0.2f;
+                                _health = Math.Max(0f, _health);
+                            }
+                        }
+                        
                     }
                 }
             }
 
         }
 
-        public void Move(double elapsedTime)
+        public void Move(float elapsedSeconds)
         {
             _currentKey = Keyboard.GetState();
             _movingDirection = MovingDirection.Still;
             // move the character using the arrow keys
+            _isTryingToAttack = _currentKey.IsKeyDown(Keys.Z);
+            if (_isAttacking && _type != CharacterType.Graffiti) { return; }
+
             if (_currentKey.IsKeyDown(Keys.Up))
             {
-                _position.Y -= (float)elapsedTime * _speed;
+                _position.Y -= elapsedSeconds * _speed * _YMoveMultiplier;
             }
             if (_currentKey.IsKeyDown(Keys.Down))
             {
-                _position.Y += (float)elapsedTime * _speed;
+                _position.Y += elapsedSeconds * _speed * _YMoveMultiplier;
             }
             if (_currentKey.IsKeyDown(Keys.Left))
             {
-                _position.X -= (float)elapsedTime * _speed;
+                _position.X -= elapsedSeconds * _speed;
                 _movingDirection = MovingDirection.Left;
             }
             if (_currentKey.IsKeyDown(Keys.Right))
             {
-                _position.X += (float)elapsedTime * _speed;
+                _position.X += elapsedSeconds * _speed;
                 _movingDirection = (_movingDirection == MovingDirection.Left) ? MovingDirection.Still :MovingDirection.Right;
             }
+            if (_movingDirection != MovingDirection.Still) { _isFacingRight = (_movingDirection == MovingDirection.Right); }
         }
 
-        public void KeepWithinBounds()
+        public virtual void KeepWithinBounds()
         {
             if (_position.Y < _texture.Height / 2)
             {
@@ -89,12 +135,12 @@ namespace KOSlamJam.Sprites
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch, string _activeCharacter)
+        public override void Draw(SpriteBatch spriteBatch, CharacterType _activeCharacter)
         {
             // todo more the font to the constructor and store inside the class
             if (_activeCharacter == _type)
             {
-                spriteBatch.Draw(_texture, _position, null, Color.White, 0f, new Vector2(_texture.Width / 2, _texture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
+                spriteBatch.Draw(_texture, _position, null, (_isHit ? Color.Red : Color.White), 0f, new Vector2(_texture.Width / 2, _texture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
             }
             else if (_health > 0)
             {
@@ -104,7 +150,7 @@ namespace KOSlamJam.Sprites
             {
                 spriteBatch.Draw(_texture, _position, null, Color.DarkRed, 0f, new Vector2(_texture.Width / 2, _texture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
             }
-            spriteBatch.DrawString(_font, ((int)_health).ToString(), new Vector2(_position.X - _texture.Width / 5, _position.Y - _texture.Height / 2 - 20), Color.Blue);
+            spriteBatch.DrawString(_font, ((int)_health).ToString(), new Vector2(_position.X - _texture.Width / 5, _position.Y - _texture.Height / 2 - 20), Color.LightBlue);
         }
 
 
