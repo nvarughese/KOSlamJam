@@ -3,7 +3,7 @@
 - Characters are artistic, zing and slam, survive 120 seconds, transition through characters, winning is optimistic.
 - itch page - https://nathanvarughese.itch.io/ko-slam-jam
 
-![alt text](https://github.com/nvarughese/Ludum-dare-52/blob/main/Screenshot.PNG)
+![alt text](https://github.com/nvarughese/KOSlamJam/blob/master/screen_shot.PNG)
 
 ## How to run
 double click on "KOSLamJam.exe - Shortcut"
