@@ -1,12 +1,12 @@
 # Knockout Slam Jam
-- game for Knockout Slam Jam, theme - artistic slam, zing 120 seconds, optimistic transition.
+- Game for Knockout Slam Jam, theme - artistic slam, zing 120 seconds, optimistic transition.
 - Characters are artistic, zing and slam, survive 120 seconds, transition through characters, winning is optimistic.
-- itch page - https://nathanvarughese.itch.io/ko-slam-jam
+- Itch page - https://nathanvarughese.itch.io/ko-slam-jam
 
 ![alt text](https://github.com/nvarughese/KOSlamJam/blob/master/screen_shot.PNG)
 
 ## How to run
-double click on "KOSLamJam.exe - Shortcut"
+Double click on "KOSLamJam.exe - Shortcut"
 
 ## How to play
 - Move the character using the arrow keys.
@@ -26,7 +26,7 @@ New elements used:
 - Background
 - Opening and closing screen
 - Music
-- put it onto the web
+- Put it onto the web
 - Sprite solidness
       - sprites bounce off each other
       - collision rectangles at base so sprites can walk behind each other
